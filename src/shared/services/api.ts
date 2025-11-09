@@ -5,31 +5,24 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class Api {
-  apiNode = 'http://localhost:3000';
+  apiNode = 'http://localhost:3000'; // sesuaikan kalau beda
 
   constructor(private httpClient: HttpClient) {}
 
-  getTodo(vData: any) {
-    return this.httpClient.post(this.apiNode + '/todo/get', vData, {
-      responseType: 'json',
-    });
-  }
+  getCatalog(vData: any) {
+  return this.httpClient.post(this.apiNode + '/catalog/get', vData);
+}
 
-  addTodo(vData: any) {
-    return this.httpClient.post(this.apiNode + '/todo/add', vData, {
-      responseType: 'json',
-    });
-  }
+addCatalog(vData: any) {
+  return this.httpClient.post(this.apiNode + '/catalog/add', vData);
+}
 
-  editTodo(vData: any) {
-    return this.httpClient.post(this.apiNode + '/todo/edit', vData, {
-      responseType: 'json',
-    });
-  }
+editCatalog(vData: any) {
+  return this.httpClient.post(this.apiNode + '/catalog/edit', vData);
+}
 
-  deleteTodo(vData: any) {
-    return this.httpClient.post(this.apiNode + '/todo/delete', vData, {
-      responseType: 'json',
-    });
-  }
+deleteCatalog(vData: any) {
+  return this.httpClient.post(this.apiNode + '/catalog/delete', vData);
+}
+
 }

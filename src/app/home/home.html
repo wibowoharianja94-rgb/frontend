@@ -1,91 +1,62 @@
-<h1>TO DO LIST</h1>
+<h1>📒 KATALOG PRIBADI</h1>
 
 <div class="container">
-  <p class="subtitle">Masukkan tugas atau aktivitas Anda!</p>
+  <p class="subtitle">Tuliskan catatan pribadi atau daftar penting Anda!</p>
 
   <!-- Input Area -->
   <div class="input-area">
     <input
       type="text"
-      id="taskInput"
-      placeholder="Masukkan tugas Anda..."
-      [(ngModel)]="newTask"
-      (keyup.enter)="addTodo()"
+      id="titleInput"
+      placeholder="Judul catatan..."
+      [(ngModel)]="newTitle"
     />
-    <button id="addBtn" (click)="addTodo()">Tambahkan Tugas!</button>
+
+    <textarea
+      id="noteInput"
+      placeholder="Tulis catatan Anda di sini..."
+      [(ngModel)]="newCatatan"
+    ></textarea>
+
+    <input
+      type="datetime-local"
+      id="dateInput"
+      [(ngModel)]="newTanggal"
+    />
+
+    <button id="addBtn" (click)="addCatalog()">Simpan Catatan</button>
   </div>
 
-  <!-- Filter Buttons -->
-  <div class="filters">
-    <button
-      class="filter-btn"
-      [class.active]="currentFilter === 'all'"
-      (click)="setFilter('all')"
-    >
-      Semua Tugas
-    </button>
-    <button
-      class="filter-btn"
-      [class.active]="currentFilter === 'completed'"
-      (click)="setFilter('completed')"
-    >
-      Tugas yang Selesai
-    </button>
-    <button
-      class="filter-btn"
-      [class.active]="currentFilter === 'pending'"
-      (click)="setFilter('pending')"
-    >
-      Tugas yang Belum Selesai
-    </button>
-  </div>
-
-  <!-- Todo Table -->
-  <div class="todo-table">
+  <!-- Catalog List -->
+  <div class="catalog-table">
     <div class="table-header">
-      <span class="task-col">Nama Tugas/Aktivitas</span>
+      <span class="title-col">Judul</span>
+      <span class="note-col">Catatan</span>
+      <span class="date-col">Tanggal</span>
       <span class="actions-col">Aksi</span>
     </div>
 
-    <ul class="todo-list">
-      <li
-        class="todo-item"
-        *ngFor="let todo of filteredTodos"
-        [class.completed]="todo.status === 1"
-      >
-        <div class="task-text" [class.completed]="todo.status === 1">
-          {{ todo.task }}
+    <ul class="catalog-list">
+      <li class="catalog-item" *ngFor="let catalog of catalogs">
+        <div class="title">{{ catalog.title }}</div>
+        <div class="note">{{ catalog.catatan }}</div>
+        <div class="date">
+          {{ catalog.tanggal | date: 'dd/MM/yyyy, HH:mm' }}
         </div>
 
         <div class="actions">
-          <button
-            class="toggle"
-            *ngIf="todo.status === 0"
-            (click)="toggleStatus(todo)"
-          >
-            Tandai Selesai
-          </button>
-
-          <button
-            class="toggle"
-            *ngIf="todo.status === 1"
-            (click)="toggleStatus(todo)"
-          >
-            Tandai Belum
-          </button>
-
-          <button class="edit" (click)="editTodo(todo)">
+          <button class="edit" (click)="editCatalog(catalog)">
             ✏️ Edit
           </button>
-          <button class="delete" (click)="deleteTodo(todo)">
-            Hapus
+          <button class="delete" (click)="deleteCatalog(catalog)">
+            🗑️ Hapus
           </button>
         </div>
       </li>
     </ul>
 
-    <div *ngIf="filteredTodos.length === 0" class="no-data">
-      Tidak ada tugas untuk ditampilkan.
+    <div *ngIf="catalogs.length === 0" class="no-data">
+      Belum ada catatan yang tersimpan.
     </div>
   </div>
 </div>
