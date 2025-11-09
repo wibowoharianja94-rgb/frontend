@@ -1,243 +1,211 @@
-/* ==== GLOBAL STYLE ==== */
+/* ======= STYLE UMUM ======= */
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f7f9fc, #eef2f3);
+  color: #333;
   margin: 0;
-  padding: 20px;
-  background-color: #13b3cf;
+  padding: 0;
 }
 
-h1 { 
-  color: #fff; 
+h1 {
+  text-align: center;
+  margin-top: 30px;
   font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-/* ==== CONTAINER ==== */
-.container {
-  max-width: 800px;
-  margin: 40px auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  color: #3f51b5;
 }
 
 .subtitle {
-  color: #666;
+  text-align: center;
+  color: #555;
   margin-bottom: 25px;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
-/* ==== INPUT AREA ==== */
+/* ======= CONTAINER ======= */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ======= INPUT AREA ======= */
 .input-area {
   display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 25px;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
 }
 
-input {
-  padding: 12px;
-  width: 60%;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+.input-area input[type="text"],
+.input-area textarea,
+.input-area input[type="datetime-local"] {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
   font-size: 1rem;
+  transition: border-color 0.2s ease;
+  outline: none;
 }
 
+.input-area input:focus,
+.input-area textarea:focus {
+  border-color: #3f51b5;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ======= BUTTON ======= */
 #addBtn {
-  padding: 12px 20px;
+  background-color: #3f51b5;
+  color: white;
   border: none;
-  border-radius: 6px;
-  background: #007bff;
-  color: #fff;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 0.95rem;
-  transition: background 0.3s;
+  transition: background-color 0.3s;
 }
 
 #addBtn:hover {
-  background: #0069d9;
+  background-color: #2e3b9e;
 }
 
-/* ==== FILTER BUTTONS ==== */
-.filters {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 25px;
-}
-
-.filter-btn {
-  background: #6c757d;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.filter-btn:hover {
-  background: #5a6268;
-}
-
-.filter-btn.active {
-  background: #007bff;
-}
-
-/* ==== TODO TABLE ==== */
-.todo-table {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fff;
+/* ======= TABLE (CATALOG LIST) ======= */
+.catalog-table {
+  border-top: 2px solid #3f51b5;
+  padding-top: 15px;
 }
 
 .table-header {
-  display: flex;
-  background: #f8f9fa;
-  padding: 15px;
-  font-weight: bold;
-  border-bottom: 2px solid #dee2e6;
+  display: grid;
+  grid-template-columns: 1.2fr 2.5fr 1.2fr 1fr;
+  font-weight: 600;
+  background: #f1f3f6;
+  padding: 10px;
+  border-radius: 10px;
+  color: #444;
+  margin-bottom: 10px;
 }
 
-.task-col {
-  flex: 1;
-  text-align: left;
-}
-
-.actions-col {
-  width: 200px;
-  text-align: center;
-}
-
-/* ==== TODO LIST ==== */
-.todo-list {
-  list-style: none;
-  padding: 0;
+.catalog-list {
+  list-style-type: none;
   margin: 0;
+  padding: 0;
 }
 
-.todo-item {
-  display: flex;
+.catalog-item {
+  display: grid;
+  grid-template-columns: 1.2fr 2.5fr 1.2fr 1fr;
   align-items: center;
-  padding: 15px;
-  border-bottom: 1px solid #eee;
-  background: #fff;
-  transition: background 0.3s;
+  padding: 12px 10px;
+  background: #fafafa;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.todo-item:last-child {
-  border-bottom: none;
+.catalog-item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 2px 8px rgba(63, 81, 181, 0.15);
 }
 
-.todo-item.completed {
-  background: #f8fff8;
+/* ======= TEXT STYLE ======= */
+.title {
+  font-weight: 500;
+  color: #222;
 }
 
-.task-text {
-  flex: 1;
-  text-align: left;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.note {
+  color: #555;
+  font-size: 0.95rem;
 }
 
-.task-text.completed {
-  text-decoration: line-through;
-  color: #28a745;
+.date {
+  color: #777;
+  font-size: 0.9rem;
 }
 
-/* ==== ACTION BUTTONS ==== */
+/* ======= BUTTON AKSI ======= */
 .actions {
   display: flex;
+  justify-content: space-evenly;
   gap: 6px;
-  justify-content: center;
-  width: 250px;
-  margin-left: 10px;
 }
 
 .actions button {
-  padding: 8px 10px;
-  border-radius: 4px;
   border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
   cursor: pointer;
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: background 0.3s;
+  transition: all 0.2s ease;
 }
 
-.actions .edit { 
-  background: #ffc107; 
-  color: #212529;
+.actions .edit {
+  background: #ffb300;
+  color: #fff;
 }
+
 .actions .edit:hover {
-  background: #e0a800;
+  background: #ff9800;
 }
 
-.actions .delete { 
-  background: #dc3545; 
+.actions .delete {
+  background: #f44336;
   color: #fff;
 }
+
 .actions .delete:hover {
-  background: #c82333;
+  background: #d32f2f;
 }
 
-.actions .toggle { 
-  background: #28a745; 
-  color: #fff;
-}
-.actions .toggle:hover {
-  background: #218838;
-}
-
-/* ==== NO DATA ==== */
+/* ======= NO DATA ======= */
 .no-data {
   text-align: center;
-  padding: 20px;
-  color: #888;
+  color: #999;
+  margin-top: 25px;
   font-style: italic;
 }
 
-/* ==== RESPONSIVE ==== */
+/* ======= RESPONSIVE DESIGN ======= */
 @media (max-width: 768px) {
-  .container {
-    margin: 20px auto;
-    padding: 20px;
-  }
-  
-  .input-area {
-    flex-direction: column;
-  }
-  
-  input {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  .filters {
-    flex-wrap: wrap;
-  }
-  
   .table-header {
     display: none;
   }
-  
-  .todo-item {
+
+  .catalog-item {
+    display: flex;
     flex-direction: column;
-    gap: 10px;
-    text-align: center;
+    align-items: flex-start;
+    padding: 14px;
+    gap: 6px;
   }
-  
-  .task-text {
-    text-align: center;
+
+  .title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #3f51b5;
   }
-  
+
+  .note {
+    font-size: 0.95rem;
+  }
+
+  .date {
+    font-size: 0.85rem;
+    color: #666;
+  }
+
   .actions {
     width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
   }
 }

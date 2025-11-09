@@ -3,7 +3,7 @@
 <div class="container">
   <p class="subtitle">Tuliskan catatan pribadi atau daftar penting Anda!</p>
 
-  <!-- Input Area -->
+  <!-- 📝 Input Area -->
   <div class="input-area">
     <input
       type="text"
@@ -24,11 +24,11 @@
       [(ngModel)]="newTanggal"
     />
 
-    <button id="addBtn" (click)="addCatalog()">Simpan Catatan</button>
+    <button id="addBtn" (click)="addCatalog()">💾 Simpan Catatan</button>
   </div>
 
-  <!-- Catalog List -->
-  <div class="catalog-table">
+  <!-- 📋 Catalog List -->
+  <div class="catalog-table" *ngIf="catalogs.length > 0">
     <div class="table-header">
       <span class="title-col">Judul</span>
       <span class="note-col">Catatan</span>
@@ -45,18 +45,15 @@
         </div>
 
         <div class="actions">
-          <button class="edit" (click)="editCatalog(catalog)">
-            ✏️ Edit
-          </button>
-          <button class="delete" (click)="deleteCatalog(catalog)">
-            🗑️ Hapus
-          </button>
+          <button class="edit" (click)="editCatalog(catalog)">✏️ Edit</button>
+          <button class="delete" (click)="deleteCatalog(catalog)">🗑️ Hapus</button>
         </div>
       </li>
     </ul>
+  </div>
 
-    <div *ngIf="catalogs.length === 0" class="no-data">
-      Belum ada catatan yang tersimpan.
-    </div>
+  <!-- 🚫 Empty State -->
+  <div *ngIf="catalogs.length === 0" class="no-data">
+    Belum ada catatan yang tersimpan. Tambahkan catatan pertama Anda!
   </div>
 </div>
